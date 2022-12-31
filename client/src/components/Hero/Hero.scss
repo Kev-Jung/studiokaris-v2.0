@@ -1,0 +1,56 @@
+#hero {
+  position: relative;
+
+  .hero-background {
+    background: url("../../assets/hero.jpg");
+    height: 80vh;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+  }
+
+  .hero-message-container {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    .hero-title {
+      font-family: var(--secondary-font-thin);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      line-height: 1.5;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+
+      &:hover {
+        background-color: #000;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #hero {
+
+    .hero-background {
+      height: 90vh;
+    }
+
+    .hero-message-container {
+      top: 45%;
+      width: min(50%, 500px);
+
+      .hero-title {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

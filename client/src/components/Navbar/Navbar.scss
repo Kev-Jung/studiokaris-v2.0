@@ -1,0 +1,111 @@
+#navbar {
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-bg-color);
+  padding: 20px;
+  width: 100%;
+  // adding fixed position prevents winoow from scrolling left to see the hidden sliding navigation manu
+  position: fixed;
+  box-shadow: 1px 3px 8px rgb(225, 225, 225);
+
+  .logo-container {
+    width: 120px;
+
+    .logo {
+      width: 100%;
+    }
+  }
+
+  .hamburger-container {
+    order: 2;
+  }
+
+  .nav-links-container {
+    color: #fff;
+    background-color: rgb(24, 24, 24);
+    position: absolute;
+    margin: 0;
+    top: 0;
+    right: 0;
+    left: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 20px;
+    z-index: 2;
+  }
+}
+
+.hidden,
+.visible {
+  transition: 400ms;
+}
+
+.hidden {
+  visibility: hidden;
+  transform: translateX(100%);
+}
+
+.visible {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+// ----- Media Queries-----
+
+// Laptop
+@media screen and (min-width: 1024px) {
+  #navbar {
+    padding: 20px 40px;
+
+    .logo-container {
+      width: 140px;
+    }
+
+    .nav-links-container {
+      color: #000;
+      background-color: transparent;
+      position: static;
+      height: auto;
+      flex-direction: row;
+      gap: 40px;
+      padding: 0;
+      margin-left: auto;
+
+      li {
+        padding: 0;
+        border: none;
+      }
+    }
+
+    .cart-container {
+      margin-left: 40px;
+      margin-right: 0;
+    }
+  }
+
+  .hidden {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .hidden,
+  .visible {
+    transition: none;
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+// Tablet
+@media screen and (min-width: 768px) {
+  #navbar {
+    .nav-links-container {
+      left: 55%;
+    }
+  }
+}

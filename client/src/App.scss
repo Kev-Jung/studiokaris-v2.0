@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Gotham-Light";
+  src: url(./fonts/Gotham-Light.otf);
+}
+
+@font-face {
+  font-family: "Mirage";
+  src: url(./fonts/Mirage-Regular.otf);
+}
+
+@font-face {
+  font-family: "Mirage-Thin";
+  src: url(./fonts/Mirage-Thin.otf);
+}
+
+:root {
+  --primary-font: "Gotham-Light", sans-serif;
+  --secondary-font: "Mirage", serif;
+  --secondary-font-thin: "Mirage-Thin", serif;
+  --heading-font-size: 1.4rem;
+  --primary-bg-color: whitesmoke;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primary-font);
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9;
+
+  // @media screen and (min-width: 1024px) {
+  //   display: none;
+  // }
+}

@@ -1,0 +1,103 @@
+#collections {
+  padding: 70px 20px;
+
+  h3 {
+    margin-bottom: 50px;
+    font-size: var(--heading-font-size);
+    letter-spacing: 1.5px;
+    text-align: center;
+  }
+
+  .collections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+
+    .collection {
+      cursor: pointer;
+      width: 100%;
+      flex-basis: 300px;
+      flex-grow: 1;
+      transition: 600ms;
+      position: relative;
+
+      &:hover::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      .browse-btn {
+        z-index: 2;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+          border: 1px solid #fff;
+          background-color: transparent;
+        }
+      }
+
+      .reel-container {
+        width: 100%;
+        min-height: 300px;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        .reel {
+          position: absolute;
+          top: -35%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .cards {
+    background: url('../../assets/collections/card1.jpg');
+
+    &:hover {
+      background: url('../../assets/collections/card2.png');
+    }
+  }
+
+  .paper-ribbon {
+    background: url('../../assets/collections/paper1.png');
+
+    &:hover {
+      background: url('../../assets/collections/paper2.jpg');
+    }
+  }
+
+  .cards,
+  .cards:hover,
+  .paper-ribbon,
+  .paper-ribbon:hover {
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #collections {
+    .collections-container {
+      flex-direction: row;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .collection {
+    height: 400px;
+  }
+}

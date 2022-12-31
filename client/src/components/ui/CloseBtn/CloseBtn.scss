@@ -1,0 +1,36 @@
+.exit-icon {
+  cursor: pointer;
+
+  .x-line,
+  .x-line::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+  }
+
+  .x-line {
+    transform: rotate(45deg);
+  }
+
+  .x-line::after {
+    content: '';
+    transform: rotate(90deg);
+  }
+}
+
+.nav-menu {
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+  .nav-menu {
+    display: none;
+  }
+}

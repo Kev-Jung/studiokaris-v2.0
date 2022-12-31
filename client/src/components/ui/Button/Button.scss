@@ -1,0 +1,29 @@
+.button {
+  cursor: pointer;
+  font-family: var(--secondary-font);
+  letter-spacing: 2px;
+  font-size: .7rem;
+  background-color: transparent;
+  transition: 300ms;
+  padding: 13px 20px;
+  border: 1px solid #000;
+}
+
+.default {
+  border: 1.5px solid #000;
+
+  &:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7)
+  }
+}
+
+.inverted {
+  border: 1px solid var(--primary-bg-color);
+  color: var(--primary-bg-color);
+
+  &:hover {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.9)
+  }
+}

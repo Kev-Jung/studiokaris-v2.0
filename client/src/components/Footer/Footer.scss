@@ -1,0 +1,97 @@
+#footer {
+  background-color: #212020;
+  padding: 80px 20px 10%;
+  color: whitesmoke;
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: .8rem;
+  line-height: 1.4;
+  position: relative;
+
+  .col {
+    padding-bottom: 50px;
+
+    .footer-title {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+    }
+
+    .footer-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .contact-email {
+        width: 145px;
+        cursor: pointer;
+        text-decoration: underline;
+        color: #99958e;
+
+        &:hover {
+          color: whitesmoke;
+        }
+      }
+
+      .social {
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+
+        .instagram,
+        .email {
+          cursor: pointer;
+          fill: whitesmoke;
+          width: 15px;
+          height: auto;
+        }
+
+        .email {
+          position: relative;
+          top: -2px;
+        }
+      }
+
+      .news-letter-subscription {
+
+        input {
+          display: block;
+          width: 100%;
+          padding: 13px 10px;
+          margin-bottom: 10px;
+          border: 1px solid whitesmoke;
+          background-color: transparent;
+          outline: none;
+          color: whitesmoke;
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    width: 100%;
+    font-size: .7rem;
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+
+@media screen and (min-width: 768px) {
+  #footer {
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #footer {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+}
