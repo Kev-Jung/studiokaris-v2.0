@@ -1,17 +1,20 @@
 import "./Navbar.scss";
 
 import { Link } from "react-router-dom";
-import { NavMenuContext } from "../../contexts/NavMenuContext";
 import { useContext, useEffect } from "react";
+import { NavMenuContext } from "../../contexts/NavMenuContext";
+import { CartContext } from "../../contexts/CartContext";
 
 import Logo from "../../assets/sk_logo.png";
 import HamburgerIcon from "../ui/HamburgerIcon/HamburgerIcon";
 import CloseBtn from "../ui/CloseBtn/CloseBtn";
 import NavItem from "../NavItem/NavItem";
 import Cart from "../ui/Cart/Cart";
+import CartDropdown from "../ui/CartDropdown/CartDropdown";
 
 const Navbar = () => {
   const { isMenuOpen, openMenu, closeMenu } = useContext(NavMenuContext);
+  const { isCartOpen } = useContext(CartContext);
 
   useEffect(() => {
     const body = document.body;
@@ -58,6 +61,7 @@ const Navbar = () => {
       </ul>
 
       <Cart />
+      {isCartOpen && <CartDropdown />}
     </nav>
   );
 };

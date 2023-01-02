@@ -9,11 +9,11 @@ const Footer = () => {
       <div className="col">
         <h4 className="footer-title">Studio Karis | Est. 2018</h4>
         <div className="footer-body">
-          <p>Made with care from California</p>
+          <p>Made with love from California</p>
           <span className="contact-email">hello@studiokaris.com</span>
           <div className="social">
             <Email className="email" />
-            <a href="https://www.instagram.com/studio.karis/">
+            <a href="https://www.instagram.com/studio.karis/" target="_blank">
               <Instagram className="instagram" />
             </a>
           </div>

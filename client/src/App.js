@@ -8,6 +8,7 @@ import { NavMenuContext } from "./contexts/NavMenuContext";
 import Vowbooks from "./pages/Vowbooks";
 import Cards from "./pages/Cards";
 import Paper from "./pages/Paper";
+import ProductDisplayPage from "./components/ProductDisplayPage/ProductDisplayPage";
 
 function App() {
   const { isMenuOpen } = useContext(NavMenuContext);
@@ -15,13 +16,21 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      {/* Todo: Fix overlay persisting when screen size greater than 1024px */}
       <div className={isMenuOpen ? "overlay" : ""}></div>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="vowbooks" element={<Vowbooks />} />
-          <Route path="cards" element={<Cards />} />
-          <Route path="paper-ribbon" element={<Paper />} />
+
+          <Route path="vowbooks" element={<Vowbooks />}></Route>
+          <Route path="vowbooks/:id" element={<ProductDisplayPage />} />
+
+          <Route path="cards" element={<Cards />}></Route>
+          <Route path="cards/:id" element={<ProductDisplayPage />} />
+
+          <Route path="paper-ribbon" element={<Paper />}></Route>
+          <Route path="paper-ribbon/:id" element={<ProductDisplayPage />} />
+          {/* Create a Route for 404 */}
         </Route>
       </Routes>
     </>

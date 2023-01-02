@@ -8,7 +8,7 @@
   width: 100%;
   // adding fixed position prevents winoow from scrolling left to see the hidden sliding navigation manu
   position: fixed;
-  box-shadow: 1px 3px 8px rgb(225, 225, 225);
+  box-shadow: var(--box-shadow);
 
   .logo-container {
     width: 120px;

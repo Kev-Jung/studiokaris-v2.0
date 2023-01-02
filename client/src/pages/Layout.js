@@ -8,7 +8,7 @@ const Layout = () => {
       <Navbar />
       <div
         className="navbar-padding"
-        style={{ paddingTop: "100px", backgroundColor: "#fff" }}
+        style={{ paddingTop: "95px", backgroundColor: "#fff" }}
       ></div>
       <Outlet />
       <Footer />

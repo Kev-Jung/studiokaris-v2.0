@@ -31,16 +31,40 @@ import { v4 as uuid } from "uuid";
 
 const defaultSetOption = (her, him) => {
   return [
-    `single (${him}) ($6.00)`,
-    `single (${her}) ($6.00)`,
-    `set (${him} + ${her}) ($12.00)`,
-    `set (x2 ${him}) ($12.00)`,
-    `set (x2 ${her}) ($12.00)`,
+    {
+      value: 6,
+      label: `single (${him}) ($6.00)`,
+    },
+    {
+      value: 6,
+      label: `single (${her}) ($6.00)`,
+    },
+    {
+      value: 12,
+      label: `set (${him} + ${her}) ($12.00)`,
+    },
+    {
+      value: 12,
+      label: `set (x2 ${him}) ($12.00)`,
+    },
+    {
+      value: 12,
+      label: `set (x2 ${her}) ($12.00)`,
+    },
   ];
 };
 
 const packSize = (minBulkPrice, maxBulkPrice) => {
-  return [`20 ($${minBulkPrice})`, `100 ($${maxBulkPrice})`];
+  return [
+    {
+      value: minBulkPrice,
+      label: `20 ($${minBulkPrice})`,
+    },
+    {
+      value: maxBulkPrice,
+      label: `100 ($${maxBulkPrice})`,
+    },
+  ];
 };
 
 const envelopeColor = [
@@ -49,8 +73,12 @@ const envelopeColor = [
   "beige",
   "black",
   "blush",
+  "dusty rose",
   "dusty blue",
+  "dusty green",
+  "tan",
   "amethyst",
+  "burgundy",
   "navy",
 ];
 
@@ -59,6 +87,7 @@ const cards = [
   {
     id: uuid(),
     type: "couple",
+    collection: "cards",
     name: "A Letter To My Husband/Wife, Wedding Day Of Cards, Classic Collection",
     img: CoupleLetterHusbandWife,
     price: 6,
@@ -69,6 +98,7 @@ const cards = [
   {
     id: uuid(),
     type: "couple",
+    collection: "cards",
     name: "To My Future Husband/Wife On Our Wedding Day Cards, Classic Collection",
     img: CoupleToMyFuture,
     price: 6,
@@ -79,6 +109,7 @@ const cards = [
   {
     id: uuid(),
     type: "couple",
+    collection: "cards",
     name: "To My Bride/Groom On Our Wedding Day Cards, Classic Collection",
     img: CoupleToMyBrideGroom,
     price: 6,
@@ -89,6 +120,7 @@ const cards = [
   {
     id: uuid(),
     type: "couple",
+    collection: "cards",
     name: "A Letter To My Bride/Groom, Wedding Cards, Classic Collection",
     img: CoupleLetterBrideGroom,
     price: 6,
@@ -100,6 +132,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Grandma and Grandpa On My Wedding Day Cards, Classic Collection",
     img: FamilyGrandmaGrandpa,
     price: 6,
@@ -110,6 +143,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Grandparents On My Wedding Day Cards, Classic Collection",
     img: FamilyGrandparents,
     price: 6,
@@ -119,6 +153,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Brother On My Wedding Day Cards, Classic Collection",
     img: FamilyBrother,
     price: 6,
@@ -128,6 +163,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Parents On My Wedding Day Cards, Classic Collection",
     img: FamilyParents,
     price: 6,
@@ -137,6 +173,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Mother-In-Law and Father-In-Law On My Wedding Day Cards, Classic Collection",
     img: FamilyMotherFatherInLaw,
     price: 6,
@@ -147,6 +184,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Step-Dad On My Wedding Day Cards, Classic Collection",
     img: FamilyStepDad,
     price: 6,
@@ -156,6 +194,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Parents-In-Law On My Wedding Day Cards, Classic Collection",
     img: FamilyParentsInLaw,
     price: 6,
@@ -165,6 +204,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Mom and Dad On My Wedding Day Cards, Classic Collection",
     img: FamilyMomDad,
     price: 6,
@@ -175,6 +215,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Sister On My Wedding Day Cards, Classic Collection",
     img: FamilySister,
     price: 6,
@@ -184,6 +225,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Brother-In-Law On My Wedding Day Cards, Classic Collection",
     img: FamilyBrotherinLaw,
     price: 6,
@@ -193,6 +235,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Aunt and Uncle On My Wedding Day Cards, Classic Collection",
     img: FamilyAuntUncle,
     price: 6,
@@ -203,6 +246,7 @@ const cards = [
   {
     id: uuid(),
     type: "family",
+    collection: "cards",
     name: "To My Stepmom On My Wedding Day Cards, Classic Collection",
     img: FamilyStepMom,
     price: 6,
@@ -214,6 +258,7 @@ const cards = [
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Will You Be Our Officiant, Proposal Card, Modern Collection",
     img: WeddingOfficiant,
     price: 6,
@@ -223,6 +268,7 @@ const cards = [
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Will You Be Our Usher, Proposal Card, Modern Collection",
     img: WeddingUsher,
     price: 6,
@@ -232,6 +278,7 @@ const cards = [
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Thank You For Being My Bridesmaid, Bridesman, Maid/Matron/ Man of Honor, Flower Girl, House Party, Wedding Card, Modern Collection",
     img: WeddingThankYouBridesmaidSerif,
     price: 6,
@@ -241,6 +288,7 @@ const cards = [
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Thank You For Being My Bridesmaid, Bridesman, Maid/Matron/Man of Honor, Flower Girl, House Party, Wedding Card, Classic Collection",
     img: WeddingBridesmaidClassic,
     price: 6,
@@ -250,15 +298,18 @@ const cards = [
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Personalized Will You Be My Bridesmaid, Bridesman, Maid/Matron/Man of Honor, Flower Girl, House Party, Proposal Card, Modern Collection",
     img: WeddingPersonalizedBridesmaidSerif,
     price: 6,
     envelopeColor,
     personalized: true,
+    customName: true,
   },
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Will You Be My Bridesmaid, Bridesman, Maid/Matron/Man of Honor, Flower Girl, House Party, Proposal Card, Modern Collection",
     img: WeddingBridesmaidSerif,
     price: 6,
@@ -268,17 +319,20 @@ const cards = [
   {
     id: uuid(),
     type: "wedding",
+    collection: "cards",
     name: "Personalized Will You Be My Bridesmaid, Bridesman, Maid/Matron/Man of Honor, Flower Girl, House Party, Proposal Card, Classic Collection",
     img: WeddingPersonalizedBridesmaidClassic,
     price: 6,
     envelopeColor,
     personalized: true,
+    customName: true,
   },
 
   // Thank You
   {
     id: uuid(),
     type: "thank you",
+    collection: "cards",
     name: "Thank You Card, Classic Collection",
     img: ThankYouClassic,
     price: 6,
@@ -288,16 +342,19 @@ const cards = [
   {
     id: uuid(),
     type: "thank you",
+    collection: "cards",
     name: "Bulk Personalized Thank You Cards, Classic Collection",
     img: ThankYouPersonalized,
     price: 100,
     envelopeColor,
     packSize: packSize(100, 300),
     personalized: true,
+    bulk: true,
   },
   {
     id: uuid(),
     type: "thank you",
+    collection: "cards",
     name: "Personalized Thank You Card, Classic Collection",
     img: ThankYouPersonalized,
     price: 7,
@@ -307,12 +364,14 @@ const cards = [
   {
     id: uuid(),
     type: "thank you",
+    collection: "cards",
     name: "Bulk Thank You Cards, Classic Collection",
     img: ThankYouClassic,
     price: 90,
     envelopeColor,
     packSize: packSize(90, 280),
     personalized: false,
+    bulk: true,
   },
 ];
 

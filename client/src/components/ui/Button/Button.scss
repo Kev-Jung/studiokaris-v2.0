@@ -27,3 +27,14 @@
     background-color: rgba(255, 255, 255, 0.9)
   }
 }
+
+.add-to-cart {
+  margin-top: 10px;
+  width: 100%;
+  color: #fff;
+  background-color: rgb(0, 0, 0);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.9)
+  }
+}

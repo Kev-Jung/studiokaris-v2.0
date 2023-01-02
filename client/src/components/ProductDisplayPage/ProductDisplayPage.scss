@@ -1,0 +1,35 @@
+$pdp-font-size: .9rem;
+
+#product-display-page {
+  font-size: $pdp-font-size;
+
+  .product-image {}
+
+  .product-description {
+    padding: 30px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .name {
+      line-height: 1.5;
+    }
+
+    .price {
+      font-family: var(--secondary-font);
+      font-size: 1.3rem;
+    }
+
+    .dropdown-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #product-display-page {
+    display: flex;
+  }
+}

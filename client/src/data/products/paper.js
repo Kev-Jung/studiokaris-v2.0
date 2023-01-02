@@ -4,12 +4,22 @@ import Ribbon from "../../assets/paper-ribbon/ribbon.png";
 import { v4 as uuid } from "uuid";
 
 const packSize = (minBulkPrice, maxBulkPrice) => {
-  return [`20 sheets ($${minBulkPrice})`, `100 sheets ($${maxBulkPrice})`];
+  return [
+    {
+      value: minBulkPrice,
+      label: `20 sheets ($${minBulkPrice})`,
+    },
+    {
+      value: maxBulkPrice,
+      label: `100 sheets ($${maxBulkPrice})`,
+    },
+  ];
 };
 
 const paper = [
   {
     id: uuid(),
+    collection: "paper",
     name: '150gsm - 4.25x6" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Wedding Stationery',
     img: HandmadePaper,
     price: 12,
@@ -18,6 +28,7 @@ const paper = [
   },
   {
     id: uuid(),
+    collection: "paper",
     name: '150gsm - 3.5x5" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Wedding Stationery',
     img: HandmadePaper,
     price: 11,
@@ -26,6 +37,7 @@ const paper = [
   },
   {
     id: uuid(),
+    collection: "paper",
     name: '200gsm - 6x8.25" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Wedding Stationery',
     img: HandmadePaper,
     price: 22,
@@ -34,6 +46,7 @@ const paper = [
   },
   {
     id: uuid(),
+    collection: "paper",
     name: '300gsm - 4.25x6" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Letterpress Wedding Stationery',
     img: HandmadePaper,
     price: 16,
@@ -43,10 +56,10 @@ const paper = [
   // Ribbon
   {
     id: uuid(),
-    name: "1.5 inch, Frayed Chiffon Ribbon for Floral Bouquets and Wedding Flatlay and Styling, **No Seams, One Continuous Piece**",
+    collection: "paper",
+    name: "1.5 inch, Frayed Chiffon Ribbon for Floral Bouquets and Wedding Flatlay and Styling, No Seams, One Continuous Piece",
     img: Ribbon,
     price: 3,
-    packSize: packSize(16, 74),
     personalized: false,
     ribbonColor: [
       "ivory",
@@ -60,7 +73,20 @@ const paper = [
       "burgundy",
       "blush",
     ],
-    length: ["sample (1ft) ($3.00)", "2 yards ($8.00)", "5 yards ($16.00)"],
+    length: [
+      {
+        value: 3,
+        label: "sample (1 ft) ($3.00)",
+      },
+      {
+        value: 8,
+        label: "2 yards ($8.00)",
+      },
+      {
+        value: 16,
+        label: "5 yards ($16.00)",
+      },
+    ],
   },
 ];
 
