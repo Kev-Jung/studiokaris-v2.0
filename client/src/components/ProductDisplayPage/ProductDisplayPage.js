@@ -2,8 +2,9 @@ import "./ProductDisplayPage.scss";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import DropDown from "../ui/DropDown/DropDown";
+import Dropdown from "../ui/Dropdown/Dropdown";
 import Button from "../ui/Button/Button";
+import { CartContext } from "../../contexts/CartContext";
 
 const ProductDisplayPage = () => {
   const { products } = useContext(ProductsContext);
@@ -25,21 +26,48 @@ const ProductDisplayPage = () => {
     bulk,
   } = products.find((product) => product.id === id);
 
-  const [productPrice, setProductPrice] = useState(price);
-  const [productSpecs, setProductSpecs] = useState({ Quantity: 1 });
+  const dropdownTypes = [
+    { label: "Set Option", options: defaultSetOption },
+    { label: "Set Option", options: personalizedSetOption },
+    { label: "Ribbon Color", options: ribbonColor },
+    { label: "Envelope Color", options: envelopeColor },
+    { label: "Pack Size", options: packSize },
+    { label: "Length", options: length },
+  ];
 
-  console.log(productSpecs);
+  const { addCartItem } = useContext(CartContext);
+
+  const [productPrice, setProductPrice] = useState(price);
+  const [productSpecs, setProductSpecs] = useState({
+    id,
+    img,
+    name,
+    defaultPrice: price,
+    Quantity: 1,
+  });
+  const [personalizationMessage, setPersonalizationMessage] = useState("");
+
+  const handlePersonalizationMessageChange = (e) => {
+    setPersonalizationMessage(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    personalizationMessage !== ""
+      ? addCartItem({ ...productSpecs, personalizationMessage })
+      : addCartItem({ ...productSpecs });
+  };
 
   // updating productSpecs will trigger useEffect to update productPrice resulting in 2 renders for every select option change
   const handleDropdownChange = (e, key) => {
-    setProductSpecs({ ...productSpecs, [key]: e.target.value });
+    setProductSpecs({ ...productSpecs, [key]: JSON.parse(e.target.value) });
   };
 
   // Updates PDP price based on custom option (SetOption, PackSize, Length) user selects
   useEffect(() => {
-    productSpecs.SetOption && setProductPrice(productSpecs.SetOption);
-    productSpecs.PackSize && setProductPrice(productSpecs.PackSize);
-    productSpecs.Length && setProductPrice(productSpecs.Length);
+    productSpecs.SetOption && setProductPrice(productSpecs.SetOption.price);
+    productSpecs.PackSize && setProductPrice(productSpecs.PackSize.price);
+    productSpecs.Length && setProductPrice(productSpecs.Length.price);
   }, [productSpecs]);
 
   return (
@@ -51,68 +79,25 @@ const ProductDisplayPage = () => {
       <div className="product-description">
         <h3 className="name">{name}</h3>
         <h3 className="price">{`$${productPrice}.00`}</h3>
-        <form className="dropdown-container">
+        <form className="dropdown-container" onSubmit={handleSubmit}>
           {/* ---------- Variable Product Dropdowns ----------  */}
-
-          {/* Set Option */}
-          {defaultSetOption && (
-            <DropDown
-              label="Set Option"
-              options={defaultSetOption}
-              handleDropdownChange={handleDropdownChange}
-            />
-          )}
-
-          {/* Personalized Set Option */}
-          {personalizedSetOption && (
-            <DropDown
-              label="Set Option"
-              options={personalizedSetOption}
-              handleDropdownChange={handleDropdownChange}
-            />
-          )}
-
-          {/* Ribbon Color */}
-          {ribbonColor && (
-            <DropDown
-              label="Ribbon Color"
-              options={ribbonColor}
-              handleDropdownChange={handleDropdownChange}
-            />
-          )}
-
-          {/* Envelope Color */}
-          {envelopeColor && (
-            <DropDown
-              label="Enveloper Color"
-              options={envelopeColor}
-              handleDropdownChange={handleDropdownChange}
-            />
-          )}
-
-          {/* Pack Size */}
-          {packSize && (
-            <DropDown
-              label="Pack Size"
-              options={packSize}
-              handleDropdownChange={handleDropdownChange}
-            />
-          )}
-
-          {/* Length */}
-          {length && (
-            <DropDown
-              label="Length"
-              options={length}
-              handleDropdownChange={handleDropdownChange}
-            />
-          )}
+          {dropdownTypes.map((dropdown, index) => {
+            return (
+              dropdown.options && (
+                <Dropdown
+                  key={index}
+                  label={dropdown.label}
+                  options={dropdown.options}
+                  handleDropdownChange={handleDropdownChange}
+                />
+              )
+            );
+          })}
 
           {/* ----- Custom Personalizations ----- */}
-
           {/* Vow Books */}
           {collection === "vowbooks" && personalized === true && (
-            <DropDown
+            <Dropdown
               label="Add Your Personalization"
               instructions={
                 customName
@@ -127,7 +112,7 @@ const ProductDisplayPage = () => {
           {collection === "cards" &&
             personalized === true &&
             type === "wedding" && (
-              <DropDown
+              <Dropdown
                 label="Add Your Personalization"
                 instructions={
                   customName
@@ -135,31 +120,41 @@ const ProductDisplayPage = () => {
                     : "Please enter the titles and quantities for your cards. For ex: maid of honor - 1, bridesmaid - 3"
                 }
                 handleDropdownChange={handleDropdownChange}
+                handlePersonalizationMessageChange={
+                  handlePersonalizationMessageChange
+                }
+                personalizationMessage={personalizationMessage}
               />
             )}
 
           {collection === "cards" &&
             personalized === true &&
             type === "thank you" && (
-              <DropDown
+              <Dropdown
                 label="Add Your Personalization"
                 instructions="Please enter your names and wedding date for your cards."
                 handleDropdownChange={handleDropdownChange}
+                handlePersonalizationMessageChange={
+                  handlePersonalizationMessageChange
+                }
+                personalizationMessage={personalizationMessage}
               />
             )}
-
           {/* -------------------------------------------------- */}
 
           {/* Quantity */}
           {!bulk && (
-            <DropDown
+            <Dropdown
               label="Quantity"
               optionDefaultValue={1}
               options={[...Array(50 + 1).keys()].slice(1)}
               handleDropdownChange={handleDropdownChange}
             />
           )}
-          <Button buttonType="addToCart">Add to Cart</Button>
+
+          <div className="add-to-cart-btn">
+            <Button buttonType="addToCart">Add to Cart</Button>
+          </div>
         </form>
       </div>
     </section>

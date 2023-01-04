@@ -6,11 +6,11 @@ import { v4 as uuid } from "uuid";
 const packSize = (minBulkPrice, maxBulkPrice) => {
   return [
     {
-      value: minBulkPrice,
+      value: { set: "20 sheets", price: minBulkPrice },
       label: `20 sheets ($${minBulkPrice})`,
     },
     {
-      value: maxBulkPrice,
+      value: { set: "100 sheets", price: maxBulkPrice },
       label: `100 sheets ($${maxBulkPrice})`,
     },
   ];
@@ -75,15 +75,15 @@ const paper = [
     ],
     length: [
       {
-        value: 3,
+        value: { set: "sample (1 ft)", price: 3 },
         label: "sample (1 ft) ($3.00)",
       },
       {
-        value: 8,
+        value: { set: "2 yards", price: 8 },
         label: "2 yards ($8.00)",
       },
       {
-        value: 16,
+        value: { set: "5 yards", price: 16 },
         label: "5 yards ($16.00)",
       },
     ],

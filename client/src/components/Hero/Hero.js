@@ -1,5 +1,6 @@
 import Button from "../ui/Button/Button";
 import "./Hero.scss";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -9,9 +10,11 @@ const Hero = () => {
           <h1 className="hero-title">
             Let's Commemorate Your Relationship From Heart to Paper
           </h1>
-          <div className="shop-btn">
-            <Button buttonType="default">Shop Keepsakes</Button>
-          </div>
+          <Link to="/vowbooks">
+            <div className="shop-btn">
+              <Button buttonType="default">Shop Keepsakes</Button>
+            </div>
+          </Link>
         </div>
       </div>
     </section>

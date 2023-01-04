@@ -32,34 +32,34 @@ const ribbonColor = [
 
 const defaultSetOption = [
   {
-    value: 20,
+    value: { set: "single (husband)", price: 20 },
     label: "single (husband) ($20.00)",
   },
   {
-    value: 20,
+    value: { set: "single (wife)", price: 20 },
     label: "single (wife) ($20.00)",
   },
   {
-    value: 40,
+    value: { set: "set (husband + wife)", price: 40 },
     label: "set (husband + wife) ($40.00)",
   },
   {
-    value: 40,
+    value: { set: "set (x2 husband)", price: 40 },
     label: "set (x2 husband) ($40.00)",
   },
   {
-    value: 40,
+    value: { set: "set (x2 wife)", price: 40 },
     label: "set (x2 wife) ($40.00)",
   },
 ];
 
 const personalizedSetOption = [
   {
-    value: 24,
+    value: { set: "single (1 booklet)", price: 24 },
     label: "single (1 booklet) ($24.00)",
   },
   {
-    value: 48,
+    value: { set: "set (2 booklets)", price: 48 },
     label: "set (2 booklets) ($48.00)",
   },
 ];

@@ -1,14 +1,15 @@
-import "./DropDown.scss";
+import { useEffect, useState } from "react";
+import "./Dropdown.scss";
 
-const DropDown = ({
+const Dropdown = ({
   label,
   options,
   handleDropdownChange,
   optionDefaultValue,
   instructions,
+  handlePersonalizationMessageChange,
+  personalizationMessage,
 }) => {
-  console.log(optionDefaultValue);
-
   const dataLabel = label.replaceAll(" ", "");
 
   return (
@@ -21,28 +22,34 @@ const DropDown = ({
         {label}
       </label>
 
-      {/* Personaliztion Instructions */}
+      {/* Personalization Instructions */}
       {instructions && <p className="instructions">{instructions}</p>}
 
       {/* options exists, then return select input otherwise text input */}
       {options ? (
         <select
-          defaultValue={optionDefaultValue ? optionDefaultValue : ""}
+          defaultValue={optionDefaultValue && optionDefaultValue}
           name={dataLabel}
           id={dataLabel}
           onChange={(e) => handleDropdownChange(e, dataLabel)}
         >
           {!optionDefaultValue && <option value="">Select an option</option>}
           {options.map((option, i) => (
-            <option key={i} value={option.value ? option.value : option}>
+            <option
+              key={i}
+              // Saving as JSON because option tag saves its values as a string
+              value={JSON.stringify(option.value ? option.value : option)}
+            >
               {option.label ? option.label : option}
             </option>
           ))}
         </select>
       ) : (
         <textarea
+          value={personalizationMessage}
+          name={dataLabel}
           maxLength="256"
-          onChange={(e) => handleDropdownChange(e, dataLabel)}
+          onChange={handlePersonalizationMessageChange}
         />
       )}
 
@@ -52,4 +59,4 @@ const DropDown = ({
   );
 };
 
-export default DropDown;
+export default Dropdown;

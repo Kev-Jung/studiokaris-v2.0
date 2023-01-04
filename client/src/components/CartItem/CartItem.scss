@@ -1,0 +1,24 @@
+.cart-item-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: var(--box-shadow);
+
+  .cart-item-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &>* {
+      font-size: .7rem;
+    }
+
+    .cart-item-name {
+      margin-bottom: 10px;
+      font-size: .8rem;
+      line-height: 1.2;
+    }
+  }
+}

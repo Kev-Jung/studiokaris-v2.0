@@ -32,23 +32,23 @@ import { v4 as uuid } from "uuid";
 const defaultSetOption = (her, him) => {
   return [
     {
-      value: 6,
+      value: { set: `single (${him})`, price: 6 },
       label: `single (${him}) ($6.00)`,
     },
     {
-      value: 6,
+      value: { set: `single (${her})`, price: 6 },
       label: `single (${her}) ($6.00)`,
     },
     {
-      value: 12,
+      value: { set: `set (${him} + ${her})`, price: 12 },
       label: `set (${him} + ${her}) ($12.00)`,
     },
     {
-      value: 12,
+      value: { set: `set (x2 ${him})`, price: 12 },
       label: `set (x2 ${him}) ($12.00)`,
     },
     {
-      value: 12,
+      value: { set: `set (x2 ${her})`, price: 12 },
       label: `set (x2 ${her}) ($12.00)`,
     },
   ];
@@ -57,11 +57,11 @@ const defaultSetOption = (her, him) => {
 const packSize = (minBulkPrice, maxBulkPrice) => {
   return [
     {
-      value: minBulkPrice,
+      value: { set: "20", price: minBulkPrice },
       label: `20 ($${minBulkPrice})`,
     },
     {
-      value: maxBulkPrice,
+      value: { set: "100", price: maxBulkPrice },
       label: `100 ($${maxBulkPrice})`,
     },
   ];
