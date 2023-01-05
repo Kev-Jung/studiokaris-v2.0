@@ -4,11 +4,11 @@ import "./Dropdown.scss";
 const Dropdown = ({
   label,
   options,
-  handleDropdownChange,
+  handleChange,
   optionDefaultValue,
   instructions,
-  handlePersonalizationMessageChange,
-  personalizationMessage,
+  value,
+  defaultValue,
 }) => {
   const dataLabel = label.replaceAll(" ", "");
 
@@ -22,39 +22,39 @@ const Dropdown = ({
         {label}
       </label>
 
-      {/* Personalization Instructions */}
+      {/* personalization instructions */}
       {instructions && <p className="instructions">{instructions}</p>}
 
-      {/* options exists, then return select input otherwise text input */}
+      {/* options exists, then return select otherwise text area */}
       {options ? (
         <select
-          defaultValue={optionDefaultValue && optionDefaultValue}
           name={dataLabel}
           id={dataLabel}
-          onChange={(e) => handleDropdownChange(e, dataLabel)}
+          onChange={handleChange}
+          defaultValue={defaultValue}
         >
-          {!optionDefaultValue && <option value="">Select an option</option>}
+          {!optionDefaultValue && (
+            <option value="Select an option">Select an option</option>
+          )}
           {options.map((option, i) => (
             <option
               key={i}
               // Saving as JSON because option tag saves its values as a string
-              value={JSON.stringify(option.value ? option.value : option)}
+              value={JSON.stringify(option?.value) || option}
             >
-              {option.label ? option.label : option}
+              {option?.label || option}
             </option>
           ))}
         </select>
       ) : (
         <textarea
-          value={personalizationMessage}
+          value={value}
+          id={dataLabel}
           name={dataLabel}
           maxLength="256"
-          onChange={handlePersonalizationMessageChange}
+          onChange={handleChange}
         />
       )}
-
-      {/* error message, initially hidden */}
-      <span className="error-message"></span>
     </div>
   );
 };

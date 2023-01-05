@@ -11,6 +11,10 @@
     height: 78%;
     padding: 10px;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .empty-cart {

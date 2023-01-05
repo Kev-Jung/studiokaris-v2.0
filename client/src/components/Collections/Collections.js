@@ -26,7 +26,7 @@ const Collections = () => {
           </Link>
         </div>
         <div className="collection paper-ribbon">
-          <Link to="paper">
+          <Link to="paper-ribbon">
             <div className="browse-btn">
               <Button buttonType="default">Paper & Ribbons</Button>
             </div>
