@@ -11,25 +11,27 @@ import CloseBtn from "../ui/CloseBtn/CloseBtn";
 import NavItem from "../NavItem/NavItem";
 import Cart from "../ui/Cart/Cart";
 import CartDropdown from "../ui/CartDropdown/CartDropdown";
+import { ModalContext } from "../../contexts/ModalContext";
 
 const Navbar = () => {
   const { isMenuOpen, openMenu, closeMenu } = useContext(NavMenuContext);
-  const { isCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isModalOpen } = useContext(ModalContext);
 
   useEffect(() => {
-    const body = document.body;
-    // closes navigation menu when clicking on body
-    body.addEventListener("click", closeMenu);
-    // prevents page from scrolling when navigation menu is open
-    isMenuOpen
-      ? body.classList.add("noscroll")
-      : body.classList.remove("noscroll");
+    isModalOpen || isMenuOpen
+      ? document.body.classList.add("noscroll")
+      : document.body.classList.remove("noscroll");
 
-    return () => body.removeEventListener("click", closeMenu);
-  }, [isMenuOpen]);
+    return () =>
+      document.body.removeEventListener("click", () => {
+        closeMenu();
+        setIsCartOpen(false);
+      });
+  }, [isModalOpen, isMenuOpen]);
 
   return (
-    <nav id="navbar" style={{ boxShadow: isMenuOpen ? "none" : "" }}>
+    <nav id="navbar" style={{ boxShadow: isMenuOpen && "none" }}>
       <Link to="/">
         <div className="logo-container">
           <img className="logo" src={Logo} alt="studiokaris logo" />
@@ -56,8 +58,9 @@ const Navbar = () => {
           // containsCategories={true}
           // subCategories={["Handmade Paper", "Ribbons"]}
         />
-
-        <CloseBtn className="nav-menu" onClick={closeMenu} />
+        <div className="nav-menu-close-btn">
+          <CloseBtn onClick={closeMenu} />
+        </div>
       </ul>
 
       <Cart />

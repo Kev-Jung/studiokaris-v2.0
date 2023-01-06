@@ -3,15 +3,22 @@ import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import ScrollToTop from "./components/helpers/ScrollToTop";
 import { Routes, Route } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavMenuContext } from "./contexts/NavMenuContext";
 import Vowbooks from "./pages/Vowbooks";
 import Cards from "./pages/Cards";
 import Paper from "./pages/Paper";
 import ProductDisplayPage from "./components/ProductDisplayPage/ProductDisplayPage";
+import { CartContext } from "./contexts/CartContext";
 
 function App() {
-  const { isMenuOpen } = useContext(NavMenuContext);
+  const { isMenuOpen, closeMenu } = useContext(NavMenuContext);
+  const { setIsCartOpen } = useContext(CartContext);
+
+  document.body.addEventListener("click", () => {
+    closeMenu();
+    setIsCartOpen(false);
+  });
 
   return (
     <>

@@ -6,9 +6,12 @@ const BUTTON_TYPE_CLASSES = {
   addToCart: "add-to-cart",
 };
 
-const Button = ({ children, buttonType }) => {
+const Button = ({ children, buttonType, onClick }) => {
   return (
-    <button className={`button ${BUTTON_TYPE_CLASSES[buttonType]}`}>
+    <button
+      className={`button ${BUTTON_TYPE_CLASSES[buttonType]}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

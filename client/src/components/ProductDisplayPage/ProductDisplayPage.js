@@ -6,6 +6,8 @@ import Dropdown from "../ui/Dropdown/Dropdown";
 import Button from "../ui/Button/Button";
 import { CartContext } from "../../contexts/CartContext";
 import TopSeller from "../TopSeller/TopSeller";
+import { ModalContext } from "../../contexts/ModalContext";
+import Modal from "../ui/Modal/Modal";
 
 const ProductDisplayPage = () => {
   const { products } = useContext(ProductsContext);
@@ -37,6 +39,7 @@ const ProductDisplayPage = () => {
   ];
 
   const { addCartItem } = useContext(CartContext);
+  const { isModalOpen, openModal, closeModal } = useContext(ModalContext);
   const [productPrice, setProductPrice] = useState(price);
   const [productSpecs, setProductSpecs] = useState({
     id,
@@ -68,9 +71,12 @@ const ProductDisplayPage = () => {
     // remove the button element from array
     productDropdownValues.pop();
     const values = productDropdownValues.map((select) => select.value);
-    values.some((value) => value === "Select an option" || value === "")
-      ? alert("Please fill out required fields")
-      : addCartItem({ ...productSpecs });
+    if (values.some((value) => value === "Select an option" || value === "")) {
+      alert("Please fill out required fields");
+    } else {
+      openModal();
+      addCartItem({ ...productSpecs });
+    }
   };
 
   // updating productSpecs will trigger useEffect to update productPrice resulting in 2 renders for every select option change
@@ -92,10 +98,9 @@ const ProductDisplayPage = () => {
 
   return (
     <>
+      {isModalOpen && <Modal cartItem={productSpecs} />}
       <section id="product-display-page">
-        <div className="product-image">
-          <img src={img} alt={name} />
-        </div>
+        <img className="product-image" src={img} alt={name} />
 
         <div className="product-description">
           <h3 className="name">{name}</h3>

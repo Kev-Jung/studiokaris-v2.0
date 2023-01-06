@@ -11,9 +11,8 @@ export const CartContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  console.log(cartItems);
-
-  const toggleIsCartOpen = () => {
+  const toggleIsCartOpen = (e) => {
+    e.stopPropagation();
     setIsCartOpen(!isCartOpen);
   };
 
@@ -26,6 +25,7 @@ export const CartContextProvider = ({ children }) => {
     addCartItem,
     isCartOpen,
     toggleIsCartOpen,
+    setIsCartOpen,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

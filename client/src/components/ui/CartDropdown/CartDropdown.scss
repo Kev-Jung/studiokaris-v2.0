@@ -12,6 +12,10 @@
     padding: 10px;
     overflow-y: auto;
 
+    &>* {
+      box-shadow: var(--box-shadow);
+    }
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -25,7 +29,6 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: var(--box-shadow);
   }
 
   .checkout-btn {
