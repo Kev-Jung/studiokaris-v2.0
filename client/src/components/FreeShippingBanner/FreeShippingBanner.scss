@@ -1,0 +1,28 @@
+.tl-banner {
+  z-index: 5;
+  position: fixed;
+  padding: 12px;
+  background-color: #cba6a6;
+  color: #fff;
+  width: 100%;
+  font-size: .8rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+
+  a {
+    color: #fff;
+  }
+
+  span {
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.tl-banner-padding {
+  height: calc(.8rem + 6px)
+}
