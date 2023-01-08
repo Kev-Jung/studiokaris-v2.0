@@ -2,16 +2,16 @@ import "./Navbar.scss";
 
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { NavMenuContext } from "../../contexts/NavMenuContext";
-import { CartContext } from "../../contexts/CartContext";
+import { NavMenuContext } from "../../../contexts/NavMenuContext";
+import { CartContext } from "../../../contexts/CartContext";
+import { ModalContext } from "../../../contexts/ModalContext";
 
-import Logo from "../../assets/sk_logo.png";
-import HamburgerIcon from "../ui/HamburgerIcon/HamburgerIcon";
-import CloseBtn from "../ui/CloseBtn/CloseBtn";
+import Logo from "../../../assets/sk_logo.png";
+import HamburgerIcon from "../../ui/HamburgerIcon/HamburgerIcon";
+import CloseBtn from "../../ui/CloseBtn/CloseBtn";
 import NavItem from "../NavItem/NavItem";
-import Cart from "../ui/Cart/Cart";
-import CartDropdown from "../ui/CartDropdown/CartDropdown";
-import { ModalContext } from "../../contexts/ModalContext";
+import CartIcon from "../../ui/CartIcon/CartIcon";
+import CartDropdown from "../../Cart/CartDropdown/CartDropdown";
 
 const Navbar = () => {
   const { isMenuOpen, openMenu, closeMenu } = useContext(NavMenuContext);
@@ -59,11 +59,11 @@ const Navbar = () => {
           // subCategories={["Handmade Paper", "Ribbons"]}
         />
         <div className="nav-menu-close-btn">
-          <CloseBtn onClick={closeMenu} />
+          <CloseBtn className="light" onClick={closeMenu} />
         </div>
       </ul>
 
-      <Cart />
+      <CartIcon />
       {isCartOpen && <CartDropdown />}
     </nav>
   );

@@ -1,25 +1,39 @@
-import CartItem from "../../CartItem/CartItem";
 import "./Modal.scss";
+
 import { useContext } from "react";
 import { ModalContext } from "../../../contexts/ModalContext";
+import { CartContext } from "../../../contexts/CartContext";
+import { Link } from "react-router-dom";
+
 import CloseBtn from "../CloseBtn/CloseBtn";
 import Button from "../Button/Button";
-import { CartContext } from "../../../contexts/CartContext";
+import CartItem from "../../Cart/CartItem/CartItem";
 
-const Modal = ({ cartItem }) => {
+const Modal = ({ productId }) => {
   const { closeModal } = useContext(ModalContext);
-  const { cartItems } = useContext(CartContext);
+  const { numCartItems, findCartItem } = useContext(CartContext);
+
+  const { img, name, Quantity } = findCartItem(productId);
 
   return (
     <div className="modal-backdrop">
       <div className="modal-container">
-        <span className="modal-close-btn" onClick={closeModal}>
+        <span className="close-btn" onClick={closeModal}>
           <CloseBtn className="dark" />
         </span>
         <h3 className="modal-title">Added to Cart!</h3>
-        <CartItem cartItem={cartItem} />
+        <CartItem
+          img={img}
+          name={name}
+          quantity={Quantity}
+          otherProps={false}
+        />
         <div className="modal-btn-group">
-          <Button buttonType="addToCart">View Cart ({cartItems.length})</Button>
+          <Link to="/cart">
+            <Button buttonType="addToCart" onClick={closeModal}>
+              View Cart ({numCartItems})
+            </Button>
+          </Link>
           <Button buttonType="default" onClick={closeModal}>
             Continue Shopping
           </Button>

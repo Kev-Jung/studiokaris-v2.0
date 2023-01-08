@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./NavItem.scss";
+
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const NavItem = ({ name, link, containsCategories, subCategories }) => {

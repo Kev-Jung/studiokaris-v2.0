@@ -4,13 +4,8 @@
   flex-basis: 100%;
   min-width: 250px;
   font-size: .8rem;
-  border-radius: 8px;
   transition: 500ms;
   box-shadow: var(--box-shadow);
-
-  img {
-    border-radius: 6px 6px 0 0;
-  }
 
   .product-info {
     padding: 20px;

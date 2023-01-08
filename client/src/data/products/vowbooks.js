@@ -68,7 +68,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "His and Her Vows, Modern Vow Books, Wedding Keepsake",
+    name: "His and Her Vows",
     img: HisHer,
     price: 20,
     defaultSetOption,
@@ -78,7 +78,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Vows To My Husband/Wife, Modern Vow Books, Wedding Keepsake",
+    name: "Vows To My Husband/Wife",
     img: ToMyHusbandWife,
     price: 20,
     defaultSetOption,
@@ -88,7 +88,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "To My Bride/Groom On Our Wedding Day, Modern Vow Books, Wedding Keepsake",
+    name: "To My Bride/Groom On Our Wedding Day",
     img: ToMyBrideGroom,
     price: 20,
     defaultSetOption,
@@ -98,7 +98,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "To My Future Husband/Wife On Our Wedding Day, Modern Vow Books, Wedding Keepsake",
+    name: "To My Future Husband/Wife On Our Wedding Day",
     img: ToMyFuture,
     price: 20,
     defaultSetOption,
@@ -108,7 +108,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Vows, Modern Vow Books, Wedding Keepsake",
+    name: "Vows",
     img: Vows,
     price: 20,
     defaultSetOption,
@@ -118,7 +118,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "A Letter To My Husband/Wife, Love Letters, Modern Vow Books, Wedding Keepsake",
+    name: "A Letter To My Husband/Wife, Love Letters",
     img: LetterHusbandWife,
     price: 20,
     defaultSetOption,
@@ -130,7 +130,7 @@ const vowbooks = [
     // named
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized Vow Books, Modern Classic Style, Wedding Keepsake",
+    name: "Personalized Vow Books, Modern Classic Style",
     img: PersonalizedClassStyle,
     price: 24,
     personalizedSetOption,
@@ -142,7 +142,7 @@ const vowbooks = [
     // named
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized Vow Books, Elegant Script Style, Wedding Keepsake",
+    name: "Personalized Vow Books, Elegant Script Style",
     img: PersonalizedElegantStyle,
     price: 24,
     personalizedSetOption,
@@ -153,7 +153,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized To My Bride/Groom On Our Wedding Day, Modern Vow Books, Wedding Keepsake",
+    name: "Personalized To My Bride/Groom On Our Wedding Day",
     img: PersonalizedToMyBrideGroom,
     price: 24,
     personalizedSetOption,
@@ -163,7 +163,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized Vows To My Husband/Wife, Modern Minimalist Vow Books, Wedding Keepsake",
+    name: "Personalized Vows To My Husband/Wife",
     img: PersonalizedToMyHusbandWife,
     price: 24,
     personalizedSetOption,
@@ -173,7 +173,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized His and Her Vows, Modern Minimalist Vow Books, Wedding Keepsake",
+    name: "Personalized His and Her Vows",
     img: PersonalizedHisHer,
     price: 24,
     personalizedSetOption,
@@ -183,7 +183,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized To My Future Husband/Wife On Our Wedding Day, Modern Minimalist Vow Books, Wedding Keepsake",
+    name: "Personalized To My Future Husband/Wife On Our Wedding Day",
     img: PersonalizedToMyFuture,
     price: 24,
     personalizedSetOption,
@@ -193,7 +193,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized A Letter To My Husband/Wife, Love Letters, Modern Minimalist, Wedding Keepsake",
+    name: "Personalized A Letter To My Husband/Wife, Love Letters",
     img: PersonalizedLetterHusbandWife,
     price: 24,
     personalizedSetOption,
@@ -203,7 +203,7 @@ const vowbooks = [
   {
     id: uuid(),
     collection: "vowbooks",
-    name: "Personalized Vows, Modern Minimalist Vow Books, Wedding Keepsake",
+    name: "Personalized Vows",
     img: PersonalizedVows,
     price: 24,
     personalizedSetOption,

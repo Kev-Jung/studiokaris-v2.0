@@ -1,8 +1,6 @@
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
-import { useContext } from "react";
-import { ModalContext } from "../contexts/ModalContext";
+import Navbar from "../components/Navigation/Navbar/Navbar";
 
 const Layout = () => {
   return (

@@ -1,0 +1,11 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  hr {
+    border: 0;
+    background-color: rgb(109, 109, 109);
+    height: 1px;
+  }
+}

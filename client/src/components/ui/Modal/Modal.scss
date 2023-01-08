@@ -14,7 +14,7 @@
     max-width: 600px;
     padding: 30px 40px 40px;
 
-    .modal-close-btn {
+    .close-btn {
       position: absolute;
       height: 20px;
       width: 20px;
@@ -35,6 +35,11 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      padding-inline: 10px;
+
+      &>button:nth-child(2):hover {
+        background-color: #000;
+      }
     }
   }
 }

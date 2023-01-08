@@ -1,16 +1,21 @@
 import "./ProductDisplayPage.scss";
-import { useParams } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+
 import { ProductsContext } from "../../contexts/ProductsContext";
+import { CartContext } from "../../contexts/CartContext";
+import { ModalContext } from "../../contexts/ModalContext";
+
 import Dropdown from "../ui/Dropdown/Dropdown";
 import Button from "../ui/Button/Button";
-import { CartContext } from "../../contexts/CartContext";
-import TopSeller from "../TopSeller/TopSeller";
-import { ModalContext } from "../../contexts/ModalContext";
 import Modal from "../ui/Modal/Modal";
+import TopSeller from "../TopSeller/TopSeller";
 
 const ProductDisplayPage = () => {
-  const { products } = useContext(ProductsContext);
+  const { findProduct } = useContext(ProductsContext);
+
   const id = useParams().id;
   const {
     img,
@@ -27,9 +32,9 @@ const ProductDisplayPage = () => {
     personalized,
     customName,
     bulk,
-  } = products.find((product) => product.id === id);
+  } = findProduct(id);
 
-  const dropdownTypes = [
+  const PDPDropdownTypes = [
     { id, label: "Set Option", options: defaultSetOption },
     { id, label: "Set Option", options: personalizedSetOption },
     { id, label: "Ribbon Color", options: ribbonColor },
@@ -38,24 +43,21 @@ const ProductDisplayPage = () => {
     { id, label: "Length", options: length },
   ];
 
-  const { addCartItem } = useContext(CartContext);
-  const { isModalOpen, openModal, closeModal } = useContext(ModalContext);
-  const [productPrice, setProductPrice] = useState(price);
-  const [productSpecs, setProductSpecs] = useState({
+  const initialProductSpecValue = {
     id,
     img,
     name,
-    defaultPrice: price,
+    price,
     Quantity: 1,
-    // SetOption: undefined,
-    // RibbonColor: undefined,
-    // EnveloperColor: undefined,
-    // PackSize: undefined,
-    // Length: undefined,
     AddYourPersonalization: "",
+    total: 0,
     // dynamically adds SetOption, PackSize, or Length depending on if the dropdown has it
-  });
-  const [addedToCart, setAddedToCart] = useState(false);
+  };
+
+  const { addCartItem } = useContext(CartContext);
+  const { isModalOpen, openModal } = useContext(ModalContext);
+  const [productPrice, setProductPrice] = useState(price);
+  const [productSpecs, setProductSpecs] = useState(initialProductSpecValue);
 
   // Updates PDP price based on custom option (SetOption, PackSize, Length) user selects
   useEffect(() => {
@@ -75,7 +77,12 @@ const ProductDisplayPage = () => {
       alert("Please fill out required fields");
     } else {
       openModal();
-      addCartItem({ ...productSpecs });
+      addCartItem({
+        id: uuid(),
+        ...productSpecs,
+        price: productPrice,
+        total: productPrice * Number(productSpecs.Quantity),
+      });
     }
   };
 
@@ -85,7 +92,13 @@ const ProductDisplayPage = () => {
     // This is required because select option values only take strings. But the SetOption, PackSize, Length takes in
     // an object which we converted to JSON. So we need to use JSON.parse to convert back into an object so we can access
     // the properties.
-    ["SetOption", "PackSize", "Length"].includes(name)
+    const containsDropdownAttribute = [
+      "SetOption",
+      "PackSize",
+      "Length",
+    ].includes(name);
+
+    containsDropdownAttribute
       ? setProductSpecs({
           ...productSpecs,
           [name]: JSON.parse(value),
@@ -98,24 +111,26 @@ const ProductDisplayPage = () => {
 
   return (
     <>
-      {isModalOpen && <Modal cartItem={productSpecs} />}
+      {isModalOpen && <Modal productId={productSpecs.id} />}
       <section id="product-display-page">
         <img className="product-image" src={img} alt={name} />
 
         <div className="product-description">
           <h3 className="name">{name}</h3>
           <h3 className="price">{`$${productPrice}.00`}</h3>
+
           <form className="dropdown-container" onSubmit={handleSubmit}>
             {/* ---------- Variable Product Dropdowns ----------  */}
-            {dropdownTypes.map((dropdown, id) => {
+            {PDPDropdownTypes.map((dropdown, id) => {
               return (
                 dropdown.options && (
                   <Dropdown
                     key={id}
                     label={dropdown.label}
                     options={dropdown.options}
-                    handleChange={handleChange}
-                    defaultValue="Select an option"
+                    onChange={handleChange}
+                    value="Select an option"
+                    required={true}
                   />
                 )
               );
@@ -131,8 +146,9 @@ const ProductDisplayPage = () => {
                     ? "Please enter your names and date in this format: Dominic, Janet, 05.21.2022"
                     : "Please enter your wedding date for personalization. For ex: 10.15.2022"
                 }
-                handleChange={handleChange}
+                onChange={handleChange}
                 value={productSpecs.AddYourPersonalization}
+                required={true}
               />
             )}
 
@@ -147,8 +163,9 @@ const ProductDisplayPage = () => {
                       ? "Please enter the names and titles for personalization. For ex: maid of honor - Iris, bridesmaid - Alaina, Hazel"
                       : "Please enter the titles and quantities for your cards. For ex: maid of honor - 1, bridesmaid - 3"
                   }
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   value={productSpecs.AddYourPersonalization}
+                  required={true}
                 />
               )}
 
@@ -158,8 +175,9 @@ const ProductDisplayPage = () => {
                 <Dropdown
                   label="Add Your Personalization"
                   instructions="Please enter your names and wedding date for your cards."
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   value={productSpecs.AddYourPersonalization}
+                  required={true}
                 />
               )}
             {/* -------------------------------------------------- */}
@@ -168,9 +186,9 @@ const ProductDisplayPage = () => {
             {!bulk && (
               <Dropdown
                 label="Quantity"
-                optionDefaultValue={1}
-                options={[...Array(50 + 1).keys()].slice(1)}
-                handleChange={handleChange}
+                required={false}
+                options={[...Array(25 + 1).keys()].slice(1)}
+                onChange={handleChange}
               />
             )}
 

@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
 import "./Dropdown.scss";
 
 const Dropdown = ({
   label,
   options,
-  handleChange,
-  optionDefaultValue,
+  onChange,
   instructions,
   value,
-  defaultValue,
+  required,
 }) => {
-  const dataLabel = label.replaceAll(" ", "");
+  const dataLabel = label && label.replaceAll(" ", "");
 
   return (
     <div className="dropdown">
       {/* label */}
-      <label
-        className={!optionDefaultValue ? "required" : ""}
-        htmlFor={dataLabel}
-      >
+      <label className={required ? "required" : ""} htmlFor={dataLabel}>
         {label}
       </label>
 
@@ -30,10 +25,10 @@ const Dropdown = ({
         <select
           name={dataLabel}
           id={dataLabel}
-          onChange={handleChange}
-          defaultValue={defaultValue}
+          onChange={onChange}
+          defaultValue={value}
         >
-          {!optionDefaultValue && (
+          {required && (
             <option value="Select an option">Select an option</option>
           )}
           {options.map((option, i) => (
@@ -52,7 +47,7 @@ const Dropdown = ({
           id={dataLabel}
           name={dataLabel}
           maxLength="256"
-          onChange={handleChange}
+          onChange={onChange}
         />
       )}
     </div>

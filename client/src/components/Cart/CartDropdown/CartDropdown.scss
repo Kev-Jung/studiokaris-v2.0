@@ -1,6 +1,6 @@
 #cart-dropdown {
   border: 1px solid #e0e0e0;
-  background-color: #fff;
+  background-color: var(--primary-bg-color);
   width: 260px;
   height: 300px;
   position: absolute;
@@ -43,7 +43,7 @@
 
 @media screen and (min-width: 768px) {
   #cart-dropdown {
-    width: 300px;
-    height: 340px;
+    width: 400px;
+    height: 440px;
   }
 }

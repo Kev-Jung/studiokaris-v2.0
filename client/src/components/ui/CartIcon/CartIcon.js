@@ -1,4 +1,4 @@
-import "./Cart.scss";
+import "./CartIcon.scss";
 import CartIcon from "../../../assets/svgs/cart.svg";
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/CartContext";

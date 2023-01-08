@@ -6,6 +6,7 @@ import PaperRibbonData from "../data/products/paper";
 
 export const ProductsContext = createContext({
   products: [],
+  findProduct: () => {},
 });
 
 export const ProductsContextProvider = ({ children }) => {
@@ -15,8 +16,13 @@ export const ProductsContextProvider = ({ children }) => {
     ...PaperRibbonData,
   ]);
 
+  const findProduct = (id) => {
+    return products.find((product) => product.id === id);
+  };
+
   const value = {
     products,
+    findProduct,
   };
 
   return (

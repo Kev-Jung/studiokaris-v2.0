@@ -3,7 +3,7 @@
   display: block;
   width: 100%;
   height: 1px;
-  background-color: #fff;
+  background-color: #000;
   position: absolute;
   top: 50%;
 }
@@ -17,7 +17,7 @@
   transform: rotate(90deg);
 }
 
-.dark,
-.dark::after {
-  background-color: #000;
+.light,
+.light::after {
+  background-color: #fff;
 }

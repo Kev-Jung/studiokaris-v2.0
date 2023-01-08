@@ -1,15 +1,17 @@
 import "./App.scss";
+import { Routes, Route } from "react-router-dom";
+import { useContext } from "react";
+import { NavMenuContext } from "./contexts/NavMenuContext";
+import { CartContext } from "./contexts/CartContext";
+
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import ScrollToTop from "./components/helpers/ScrollToTop";
-import { Routes, Route } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { NavMenuContext } from "./contexts/NavMenuContext";
 import Vowbooks from "./pages/Vowbooks";
 import Cards from "./pages/Cards";
 import Paper from "./pages/Paper";
 import ProductDisplayPage from "./components/ProductDisplayPage/ProductDisplayPage";
-import { CartContext } from "./contexts/CartContext";
+import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
   const { isMenuOpen, closeMenu } = useContext(NavMenuContext);
@@ -37,7 +39,10 @@ function App() {
 
           <Route path="paper-ribbon" element={<Paper />}></Route>
           <Route path="paper-ribbon/:id" element={<ProductDisplayPage />} />
-          {/* Create a Route for 404 */}
+
+          <Route path="cart" element={<CartPage />} />
+
+          <Route path="*" element={<Home />} />
         </Route>
       </Routes>
     </>

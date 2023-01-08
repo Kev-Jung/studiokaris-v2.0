@@ -1,0 +1,10 @@
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: .9rem;
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+}

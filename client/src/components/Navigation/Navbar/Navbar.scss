@@ -6,7 +6,6 @@
   background-color: var(--primary-bg-color);
   padding: 20px;
   width: 100%;
-  // adding fixed position prevents winoow from scrolling left to see the hidden sliding navigation manu
   position: fixed;
   box-shadow: var(--box-shadow);
 
@@ -63,8 +62,6 @@
 }
 
 // ----- Media Queries-----
-
-// Laptop
 @media screen and (min-width: 1024px) {
   #navbar {
     padding: 20px 40px;
@@ -110,7 +107,6 @@
   }
 }
 
-// Tablet
 @media screen and (min-width: 768px) {
   #navbar {
     .nav-links-container {

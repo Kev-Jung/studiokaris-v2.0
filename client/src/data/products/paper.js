@@ -20,7 +20,7 @@ const paper = [
   {
     id: uuid(),
     collection: "paper",
-    name: '150gsm - 4.25x6" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Wedding Stationery',
+    name: '150gsm - 4.25x6" Handmade Cotton Rag Paper With Deckled Edges',
     img: HandmadePaper,
     price: 12,
     packSize: packSize(12, 50),
@@ -29,7 +29,7 @@ const paper = [
   {
     id: uuid(),
     collection: "paper",
-    name: '150gsm - 3.5x5" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Wedding Stationery',
+    name: '150gsm - 3.5x5" Handmade Cotton Rag Paper With Deckled Edges',
     img: HandmadePaper,
     price: 11,
     packSize: packSize(11, 46),
@@ -38,7 +38,7 @@ const paper = [
   {
     id: uuid(),
     collection: "paper",
-    name: '200gsm - 6x8.25" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Wedding Stationery',
+    name: '200gsm - 6x8.25" Handmade Cotton Rag Paper With Deckled Edges',
     img: HandmadePaper,
     price: 22,
     packSize: packSize(22, 100),
@@ -47,7 +47,7 @@ const paper = [
   {
     id: uuid(),
     collection: "paper",
-    name: '300gsm - 4.25x6" Handmade Cotton Rag Paper With Deckled Edges - Perfect for Letterpress Wedding Stationery',
+    name: '300gsm - 4.25x6" Handmade Cotton Rag Paper With Deckled Edges',
     img: HandmadePaper,
     price: 16,
     packSize: packSize(16, 74),
@@ -57,7 +57,7 @@ const paper = [
   {
     id: uuid(),
     collection: "paper",
-    name: "1.5 inch, Frayed Chiffon Ribbon for Floral Bouquets and Wedding Flatlay and Styling, No Seams, One Continuous Piece",
+    name: "1.5 inch, Frayed Chiffon Ribbon for Floral Bouquets and Wedding Flatlay and Styling",
     img: Ribbon,
     price: 3,
     personalized: false,
