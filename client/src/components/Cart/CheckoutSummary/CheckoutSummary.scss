@@ -1,7 +1,7 @@
+@use "../../../main";
+
 .summary {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  @include main.flex($direction: column, $gap: 20px);
 
   hr {
     border: 0;

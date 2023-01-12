@@ -15,19 +15,13 @@ import CartDropdown from "../../Cart/CartDropdown/CartDropdown";
 
 const Navbar = () => {
   const { isMenuOpen, openMenu, closeMenu } = useContext(NavMenuContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen } = useContext(CartContext);
   const { isModalOpen } = useContext(ModalContext);
 
   useEffect(() => {
     isModalOpen || isMenuOpen
       ? document.body.classList.add("noscroll")
       : document.body.classList.remove("noscroll");
-
-    return () =>
-      document.body.removeEventListener("click", () => {
-        closeMenu();
-        setIsCartOpen(false);
-      });
   }, [isModalOpen, isMenuOpen]);
 
   return (

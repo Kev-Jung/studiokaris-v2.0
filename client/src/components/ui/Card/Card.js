@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Card = ({ product }) => {
   const { id, name, img, price } = product;
   return (
-    <Link to={id} className="card" onClick={() => console.log(id)}>
+    <Link to={id} className="card">
       <img src={img} alt={name} title={name} />
       <div className="product-info">
         <h4 className="name">{name}</h4>

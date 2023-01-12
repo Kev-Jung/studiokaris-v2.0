@@ -5,7 +5,7 @@ import { CartContext } from "../../../contexts/CartContext";
 
 import CloseBtn from "../../ui/CloseBtn/CloseBtn";
 import Dropdown from "../../ui/Dropdown/Dropdown";
-import CartAttribute from "../CartAttributes/CartAttributes";
+import CartAttributes from "../CartAttributes/CartAttributes";
 
 const CheckoutItem = ({ checkoutItem }) => {
   const { removeCartItem, editCartItem } = useContext(CartContext);
@@ -27,7 +27,7 @@ const CheckoutItem = ({ checkoutItem }) => {
       <div className="checkout-details-container">
         <img src={img} alt={name} />
         <div className="checkout-details">
-          <CartAttribute id={id} product={checkoutItem} />
+          <CartAttributes id={id} product={checkoutItem} />
 
           <div className="checkout-qty-container">
             <Dropdown

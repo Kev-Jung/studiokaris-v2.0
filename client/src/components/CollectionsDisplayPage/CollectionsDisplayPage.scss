@@ -1,47 +1,51 @@
 #collections-display-page {
   background-color: #fff;
-  padding: 50px 20px;
-
-  .collection-display-page-title {
-    font-family: var(--secondary-font-thin);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    line-height: 1.5;
-    font-size: 1.6rem;
-    margin-bottom: 30px;
-
-    // different css from the 
-    text-align: center;
-    margin: 10px 0 50px;
-  }
+  margin: auto;
 
   .collections-display-page-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    max-width: var(--max-width);
+    padding: 50px 20px;
+    margin: auto;
 
-
-    @media screen and (min-width: 560px) and (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
+    .collection-display-page-title {
+      font-family: var(--secondary-font-thin);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      line-height: 1.5;
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      text-align: center;
+      margin: 10px 0 50px;
     }
 
-    @media screen and (min-width: 768px) {
+    .collections-item-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+
+      @media screen and (min-width: 560px) and (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media screen and (min-width: 1440px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media screen and (min-width: 2000px) {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #collections-display-page {
+    .collections-display-page-container {
       padding-inline: 40px;
-    }
-
-    @media screen and (min-width: 1024px) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media screen and (min-width: 1440px) {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media screen and (min-width: 2000px) {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
     }
   }
 }

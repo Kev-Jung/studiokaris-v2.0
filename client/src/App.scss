@@ -17,7 +17,10 @@
   --primary-font: "Gotham-Light", sans-serif;
   --secondary-font: "Mirage", serif;
   --secondary-font-thin: "Mirage-Thin", serif;
-  --heading-font-size: 1.4rem;
+
+  --heading-font-size: 1.3rem;
+  --max-width: 1800px;
+
   --primary-bg-color: whitesmoke;
   --box-shadow: 1px 2px 5px rgb(225, 225, 225);
   --overlay-bg: rgba(0, 0, 0, 0.7);
@@ -60,8 +63,4 @@ img {
   width: 100%;
   background-color: var(--overlay-bg);
   z-index: 9;
-
-  // @media screen and (min-width: 1024px) {
-  //   display: none;
-  // }
 }

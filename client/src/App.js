@@ -1,6 +1,7 @@
 import "./App.scss";
+
 import { Routes, Route } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavMenuContext } from "./contexts/NavMenuContext";
 import { CartContext } from "./contexts/CartContext";
 
@@ -12,20 +13,25 @@ import Cards from "./pages/Cards";
 import Paper from "./pages/Paper";
 import ProductDisplayPage from "./components/ProductDisplayPage/ProductDisplayPage";
 import CartPage from "./pages/CartPage/CartPage";
+import useWindowSize from "./hooks/useWindowSize";
 
 function App() {
   const { isMenuOpen, closeMenu } = useContext(NavMenuContext);
   const { setIsCartOpen } = useContext(CartContext);
+  const { width } = useWindowSize();
 
   document.body.addEventListener("click", () => {
     closeMenu();
     setIsCartOpen(false);
   });
 
+  useEffect(() => {
+    width >= 1024 && closeMenu();
+  }, [width]);
+
   return (
     <>
       <ScrollToTop />
-      {/* Todo: Fix overlay persisting when screen size greater than 1024px */}
       <div className={isMenuOpen ? "overlay" : ""}></div>
       <Routes>
         <Route path="/" element={<Layout />}>

@@ -1,3 +1,5 @@
+@use "../../main";
+
 #banner {
   max-width: min(80%, 625px);
   margin: 100px auto 20px;
@@ -8,12 +10,7 @@
   text-align: center;
 
   .banner-title {
-    text-transform: uppercase;
-    font-size: var(--heading-font-size);
-    font-family: var(--secondary-font-thin);
-    letter-spacing: 3.5px;
-    margin-bottom: 20px;
-    line-height: 1.5;
+    @include main.mainTitle;
   }
 
   p {
@@ -28,4 +25,12 @@
   max-height: 350px;
   width: 100%;
   padding-inline: 20px;
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .banner-collage {
+    padding-inline: 40px;
+  }
 }

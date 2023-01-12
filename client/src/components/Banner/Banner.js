@@ -1,4 +1,5 @@
 import "./Banner.scss";
+
 import BannerPic from "../../assets/banner.png";
 
 const Banner = () => {

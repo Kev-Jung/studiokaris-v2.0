@@ -1,3 +1,5 @@
+@use "../../../main";
+
 .cart-checkout-item {
   padding: 20px;
   margin-bottom: 20px;
@@ -21,10 +23,8 @@
 
 
     .checkout-details {
-      display: flex;
-      flex-direction: column;
+      @include main.flex($direction: column, $gap: 10px);
       font-size: .8rem;
-      gap: 10px;
 
       .checkout-qty-container {
         width: 55px;

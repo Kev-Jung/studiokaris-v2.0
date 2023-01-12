@@ -1,0 +1,21 @@
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin mainTitle {
+  font-family: var(--secondary-font-thin);
+  text-transform: uppercase;
+  font-size: var(--heading-font-size);
+  letter-spacing: 4px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+@mixin flex($direction: row, $gap: 20px) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}

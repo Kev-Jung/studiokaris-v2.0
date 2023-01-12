@@ -12,7 +12,9 @@ const CartDropdown = () => {
   return (
     <div id="cart-dropdown">
       {numCartItems === 0 && (
-        <span className="empty-cart">Your cart is currently empty.</span>
+        <div className="cart-items-empty-container">
+          <span className="empty-cart">Your cart is currently empty.</span>
+        </div>
       )}
 
       <div className="cart-items-container">

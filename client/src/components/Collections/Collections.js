@@ -1,7 +1,9 @@
 import "./Collections.scss";
+
+import { Link } from "react-router-dom";
+
 import Reel from "../../assets/collections/reel.mov";
 import Button from "../ui/Button/Button";
-import { Link } from "react-router-dom";
 
 const Collections = () => {
   return (

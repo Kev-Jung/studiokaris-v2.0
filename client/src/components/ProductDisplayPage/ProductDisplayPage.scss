@@ -1,3 +1,5 @@
+@use "../../main";
+
 $pdp-font-size: .9rem;
 
 #product-display-page {
@@ -8,9 +10,7 @@ $pdp-font-size: .9rem;
   .product-description {
     width: 100%;
     padding: 30px 20px 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    @include main.flex($direction: column);
     margin: auto;
 
     .name {
@@ -23,9 +23,7 @@ $pdp-font-size: .9rem;
     }
 
     .dropdown-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      @include main.flex($direction: column);
 
       .add-to-cart-btn {
         margin-top: 10px;
@@ -36,10 +34,9 @@ $pdp-font-size: .9rem;
 
 @media screen and (min-width: 1024px) {
   #product-display-page {
+    @include main.flex($gap: 30px);
     font-size: 1rem;
-    display: flex;
     justify-content: center;
-    gap: 30px;
     padding: 100px;
 
     .product-image {

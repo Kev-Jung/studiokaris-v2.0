@@ -1,5 +1,7 @@
 import "./TopSeller.scss";
+
 import popular from "../../data/popular";
+
 import Card from "../ui/Card/Card";
 
 const TopSeller = () => {
